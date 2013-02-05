@@ -1,0 +1,68 @@
+enum HashAlgorithm {
+    SHA256D = 0;
+    RIPEMD160D = 1;
+}
+
+message PubKey {
+    // should allow only compressed, same maliability problems as bitcoin?
+    optional bytes ecc_secp256k1 = 1;
+}
+
+message Signature {
+    optional uint32 version = 1;
+
+    optional PubKey pubkey = 1;
+
+    optional bytes sig = 1;
+}
+
+message BitcoinAddress {
+    optional pubkey_hash = 1;
+    optional p2sh_hash = 1;
+}
+
+message Contract {
+    required uint32 major_version = 1;
+    required uint32 minor_version = 1;
+
+    optional bytes prev_hash = 1;
+
+    repeated PubKey pubkeys = 1;
+    optional uint32 required_pubkeys = 1 [default = 1];
+
+    repeated BitcoinAddress deposit_addresses = 1;
+}
+
+
+message Token {
+    required BitcoinAddress dest = 1;
+    required bytes nonce = 1;
+    required bytes value = 1;
+}
+
+message TokenTxIn {
+}
+
+message TxIn {
+}
+
+message BitcoinTxOut {
+    required bytes nonce = 1;
+}
+
+message TokenTxOut {
+    required bytes nonce = 1;
+}
+
+message TxOut {
+    required int64 value = 1;
+
+}
+
+message Transaction {
+    required uint64 major_version = 1;
+    required uint64 minor_version = 1;
+
+    repeated TxIn txins = 1;
+    repeated TxOut txouts = 1;
+}
