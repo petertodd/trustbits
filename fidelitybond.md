@@ -346,11 +346,11 @@ sacrifice" the format should be standardized as much as possible to allow easy
 detection. Finally we want to ensure that implementations do not add to the
 UTXO set. Thus the following scriptPubKey for publication is proposed:
 
-    <serialized transaction> OP_FALSE
+    <serialized transaction> OP_RETURN
 
 The advantage is that the txout is guaranteed prunable; lazy implementors might
 not bother to implement the code required to implement creating the signature
-to spend a non-standard, but spendable, output. The author has not gotten
+to spend a non-standard but spendable output; the author has not gotten
 around to doing so with his first demonstration of a a two-step sacrifice...
 
 
