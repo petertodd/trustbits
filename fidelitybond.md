@@ -22,7 +22,7 @@ same data that the CMerkleTx class contains:
 
     message MerkleBitcoinTx {
         required bytes raw = 1; // the serialized transaction
-        required uint32 block = 2; // block number
+        required bytes block = 2; // block hash
         required uint32 index = 3; // index
         repeated bytes branches = 4; // list of partial branches
     }
