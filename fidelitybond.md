@@ -286,13 +286,13 @@ A varient on the trivially spendable output proposed by gmaxwell
 replacable output, achieved by signing the txin with either SIGHASH_NONE or
 SIGHASH_SINGLE. Both methods are fatally flawed however in that a malicious
 party can replace the desired, short, txout with any number of txouts, thus
-making the proof much larger, potentially even up to the 1MiB block size. A
+making the proof much larger, potentially even up to the 1MB block size. A
 similar problem exists with the ANYONECANPAY flag.
 
 Of course miners can pad SIGHASH_ANY-using transactions, however that limits
-the damage to no more than 10KiB of additional data, as EvalScript() has a hard
-10KiB limit. If there was a way of specifying that a single txout was
-replacable the additional 10KiB in the scriptPubKey might be acceptable,
+the damage to no more than 10KB of additional data, as EvalScript() has a hard
+10KB limit. If there was a way of specifying that a single txout was
+replacable the additional 10KB in the scriptPubKey might be acceptable,
 however SIGHASH_NONE, SIGHASH_SINGLE and the ANYONECANPAY flag all allow for an
 unlimited number of extra txins or txouts to be added to the transaction.
 
